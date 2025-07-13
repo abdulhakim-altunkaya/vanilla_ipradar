@@ -23,3 +23,22 @@
   // Add marker
   const marker = L.marker([latitude, longitude], { icon: customIcon }).addTo(map);
 
+
+
+/* SAVE VISITOR */
+async function logVisitor() {
+  try {
+    const response = await axios.post('https://www.eumaps.org/api/save-visitor/ipradar');
+    console.log('Visitor logged:', response.data);
+  } catch (error) {
+    if (error.response) {
+      console.error('Server responded with error:', error.response.data);
+    } else {
+      console.error('Request failed:', error.message);
+    }
+  }
+}
+
+// Attach to button click
+document.getElementById('logVisitorBtn').addEventListener('click', logVisitor);
+

@@ -11,5 +11,5 @@ keyboard enter down also connected to main function
 add small screen
 
 LIST:
-add input frontend checks
+add input frontend checks - length and ip like input check
 
