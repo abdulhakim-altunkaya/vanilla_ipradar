@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP Radar</title>
+    <link rel="icon" type="image/x-icon" href="./assets/icons/ipradar.png">
+    <link rel="stylesheet" href="./assets/css/index.css"> <!-- Your CSS -->
+    <script defer src="./assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- Leaflet CSS (no integrity) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+    <!-- FontAwesome CSS (no integrity) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
+    <!-- Leaflet JS (no integrity) -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+
+</head>
+<body>
+  <div class="mainArea">
+    <!-- TOP AREA -->
+    <div class="topArea">  
+        <h2>IP RADAR</h2>
+        <span>Find Location of any IP address</span>
+    </div>
+
+    <!-- MAIN AREA --> 
+    <div class="contentArea">
+        <div class="inputArea">
+            <input class="inputIP" type="text" placeholder="enter IP address" maxlength="45">
+            <button class="button1010">Locate IP</button>
+        </div>
+        <div class="resultAndMapArea">
+            <div class="resultArea">result area</div>
+            <div class="mapArea">
+                <div id="map" class="mapDiv"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottomArea">
+        <footer class="footerArea">
+            <p>📢 Interested in advertising? We welcome partnerships and sponsors. Get in touch to discuss 
+                visibility and collaboration opportunities.</p>
+            <p class="footerDetails">
+                <span>Contact: <a href="drysoftware1@gmail.com">drysoftware1@gmail.com</a></span>  
+                <span>SVG icon: <a href="https://www.svgrepo.com/svg/241057/european-union-europe">SVG Repo</a></span>
+            </p>
+        </footer>
+    </div>
+    
+  </div>
+</body>
+</html>
