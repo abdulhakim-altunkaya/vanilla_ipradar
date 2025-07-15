@@ -24,12 +24,19 @@
   const marker = L.marker([latitude, longitude], { icon: customIcon }).addTo(map);
 
 
+/*
 
-/* SAVE VISITOR */
 async function logVisitor() {
+  
+  const ipInput = document.querySelector('.inputIP').value.trim();
+  if (!ipInput) {
+    document.querySelector('.resultArea').innerHTML = 'Please enter a valid IP address.';
+    return;
+  }
+
   try {
-    const response = await axios.post('https://www.eumaps.org/api/save-visitor/ipradar');
-    console.log('Visitor logged:', response.data);
+    const response = await axios.post(`https://www.eumaps.org/api/save-visitor/ipradar/${ipInput}`);
+    console.log('Visitor logged:', response.data.resData);
   } catch (error) {
     if (error.response) {
       console.error('Server responded with error:', error.response.data);
@@ -39,6 +46,36 @@ async function logVisitor() {
   }
 }
 
-// Attach to button click
-document.getElementById('logVisitorBtn').addEventListener('click', logVisitor);
+document.addEventListener('DOMContentLoaded', () => {
+  const button = document.getElementById('logVisitorBtn');
+  if (button) {
+    button.addEventListener('click', logVisitor);
+  }
+});
+*/
+async function handleGeolocation() {
+    const ipInputValue = document.getElementById('ipInput').value.trim();
+    if (!ipInputValue) {
+        console.log("Please enter a valid IP address.");
+        return;
+    }
 
+    try {
+      const response = await axios.post("https://www.eumaps.org/api/get-coordinates-and-log-visitor",
+        { ipInput: ipInputValue });
+
+      const geoData = response.data.resData;
+
+      document.getElementById('continentSpan').textContent = geoData.continent_name;
+      document.getElementById('countrySpan').textContent = geoData.country_name;
+      document.getElementById('citySpan').textContent = geoData.city;
+      document.getElementById('latitudeSpan').textContent = geoData.latitude;
+      document.getElementById('longitudeSpan').textContent = geoData.longitude;
+      document.getElementById('connectionTypeSpan').textContent =  geoData.connection_type;
+      document.getElementById('ipTypeSpan').textContent = geoData.type;
+
+    } catch (error) {
+        console.error("Error fetching geolocation data:", error.message);
+    }
+}
+document.getElementById('logVisitorBtn').addEventListener('click', handleGeolocation);

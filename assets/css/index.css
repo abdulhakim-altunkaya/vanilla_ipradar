@@ -58,13 +58,11 @@
         flex-grow: 2;
         display: flex;
         flex-direction: column;
-        background-color: red;
     }
     .inputArea {
-        background-color: pink;
         flex: 1;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         justify-content: center;
         text-align: center;
         align-items: center;
@@ -72,7 +70,6 @@
     .inputIP {
         width: 220px;
         height: 40px;
-        margin-bottom: 14px;
         padding: 5px;
         border-radius: 5px;
         outline: none;
@@ -80,16 +77,28 @@
         font-weight: bold;
         letter-spacing: 2px; 
         font-size: 15px;
+        box-sizing: border-box; /* Ensures padding fits within height */
     }
     .resultAndMapArea {
-        background-color: lightgreen;
         flex: 4;
         display: flex;
         flex-direction: row;
+        margin-top: 10px;
     }
     .resultArea {
         width: 50%;
-        padding-left: 50px;
+        padding-left: 120px;
+    }
+    dl {
+        display: grid;
+        grid-template-columns: max-content auto;
+        gap: 8px 16px; /* vertical and horizontal spacing */
+    }
+    dt {
+        font-weight: bold;
+    }
+    dd {
+        margin: 0;
     }
     .mapArea {
         width: 50%;
@@ -97,6 +106,8 @@
     .mapDiv {
         height: 300px;
         width: 300px;
+        border-radius: 5px;
+        box-shadow: 0 8px 16px rgba(39, 75, 158, 0.4);
     }
     .bottomArea {
         padding: 15px;
@@ -123,18 +134,21 @@
     @import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
     .button1010 {
         width: 220px;
-      font-family: 'Kanit', sans-serif;
-      background-color: #101820;
-      border: 2px solid #FEE715;
-      color: white;
-      padding: 4px 6px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 22px;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        height: 40px; /* Matches inputIP height */
+        margin-left: 20px;
+        font-family: 'Kanit', sans-serif;
+        background-color: #101820;
+        border: 2px solid #FEE715;
+        color: white;
+        padding: 4px 6px; /* Retained, fits within height */
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 22px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        box-sizing: border-box; /* Ensures padding and border fit within height */
     }
     .button1010:hover {
       background-color: #0D141E;

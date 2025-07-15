@@ -6,7 +6,6 @@
     <title>IP Radar</title>
     <link rel="icon" type="image/x-icon" href="./assets/icons/ipradar.png">
     <link rel="stylesheet" href="./assets/css/index.css"> <!-- Your CSS -->
-    <script defer src="./assets/js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <!-- Leaflet CSS (no integrity) -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
@@ -27,11 +26,23 @@
     <!-- MAIN AREA --> 
     <div class="contentArea">
         <div class="inputArea">
-            <input class="inputIP" type="text" placeholder="enter IP address" maxlength="45">
-            <button class="button1010">Locate IP</button>
+            <input class="inputIP" id="ipInput" type="text" 
+                placeholder="enter IP address" maxlength="45" autocomplete="off">
+            <button class="button1010" id="logVisitorBtn">Locate IP</button>
         </div>
         <div class="resultAndMapArea">
-            <div class="resultArea">result area</div>
+            <div class="resultArea">
+                <h3>IP Details</h3>
+                <dl>
+                    <dt>Continent:</dt><dd id="continentSpan"></dd>
+                    <dt>Country:</dt><dd id="countrySpan"></dd>
+                    <dt>City:</dt><dd id="citySpan"></dd>
+                    <dt>Latitude:</dt><dd id="latitudeSpan"></dd>
+                    <dt>Longitude:</dt><dd id="longitudeSpan"></dd>
+                    <dt>Connection Type:</dt><dd id="connectionTypeSpan"></dd>
+                    <dt>IP Type:</dt><dd id="ipTypeSpan"></dd>
+                </dl>
+            </div>
             <div class="mapArea">
                 <div id="map" class="mapDiv"></div>
             </div>
@@ -50,5 +61,6 @@
     </div>
     
   </div>
+    <script defer src="./assets/js/main.js"></script>
 </body>
 </html>
