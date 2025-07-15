@@ -1,4 +1,3 @@
-
   const latitude = 40.7128;  // Example: New York
   const longitude = -74.0060;
 
@@ -23,42 +22,34 @@
   // Add marker
   const marker = L.marker([latitude, longitude], { icon: customIcon }).addTo(map);
 
-
-/*
-
-async function logVisitor() {
-  
-  const ipInput = document.querySelector('.inputIP').value.trim();
-  if (!ipInput) {
-    document.querySelector('.resultArea').innerHTML = 'Please enter a valid IP address.';
-    return;
-  }
-
-  try {
-    const response = await axios.post(`https://www.eumaps.org/api/save-visitor/ipradar/${ipInput}`);
-    console.log('Visitor logged:', response.data.resData);
-  } catch (error) {
-    if (error.response) {
-      console.error('Server responded with error:', error.response.data);
-    } else {
-      console.error('Request failed:', error.message);
-    }
-  }
+function displayError(message) {
+    document.getElementById('errorArea').textContent = message;
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  const button = document.getElementById('logVisitorBtn');
-  if (button) {
-    button.addEventListener('click', logVisitor);
-  }
-});
-*/
+function clearError() {
+    document.getElementById('errorArea').textContent = '';
+}
+
+function isValidIP(ip) {
+    const ipv4Pattern = /^(\d{1,3}\.){3}\d{1,3}$/;
+    const ipv6Pattern = /^([a-fA-F0-9:]+)$/;
+    return ipv4Pattern.test(ip) || ipv6Pattern.test(ip);
+}
+
 async function handleGeolocation() {
     const ipInputValue = document.getElementById('ipInput').value.trim();
+
     if (!ipInputValue) {
-        console.log("Please enter a valid IP address.");
+        displayError("Please enter an IP address. ❌");
         return;
     }
+
+    if (ipInputValue.length > 45 || !isValidIP(ipInputValue)) {
+        displayError("Invalid IP format. Please check your input. ❌");
+        return;
+    }
+
+    clearError();  // Clear error if valid input
 
     try {
       const response = await axios.post("https://www.eumaps.org/api/get-coordinates-and-log-visitor",
@@ -74,8 +65,15 @@ async function handleGeolocation() {
       document.getElementById('connectionTypeSpan').textContent =  geoData.connection_type;
       document.getElementById('ipTypeSpan').textContent = geoData.type;
 
+              const newLat = parseFloat(geoData.latitude);
+        const newLng = parseFloat(geoData.longitude);
+
+        map.setView([newLat, newLng], 9);            // move map
+        marker.setLatLng([newLat, newLng]);          // move marker
+
     } catch (error) {
-        console.error("Error fetching geolocation data:", error.message);
+        displayError("Error fetching geolocation data. Please try again.");
+        console.error(error);
     }
 }
 document.getElementById('logVisitorBtn').addEventListener('click', handleGeolocation);
