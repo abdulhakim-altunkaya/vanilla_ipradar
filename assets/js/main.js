@@ -65,15 +65,33 @@ async function handleGeolocation() {
       document.getElementById('connectionTypeSpan').textContent =  geoData.connection_type;
       document.getElementById('ipTypeSpan').textContent = geoData.type;
 
-              const newLat = parseFloat(geoData.latitude);
-        const newLng = parseFloat(geoData.longitude);
+      const newLat = parseFloat(geoData.latitude);
+      const newLng = parseFloat(geoData.longitude);
 
-        map.setView([newLat, newLng], 9);            // move map
-        marker.setLatLng([newLat, newLng]);          // move marker
+      map.setView([newLat, newLng], 9);            // move map
+      marker.setLatLng([newLat, newLng]);          // move marker
 
     } catch (error) {
-        displayError("Error fetching geolocation data. Please try again.");
-        console.error(error);
+      let message = "Error fetching geolocation data. Please try again. ❌";
+
+      if (error.response) {
+          // Error response from backend
+          const backendMessage = error.response.data?.resMessage;
+          if (backendMessage) {
+              message = `${backendMessage} ❌`;
+          } else if (error.response.status === 403) {
+              message = "Access denied. This IP may be ignored. ❌ ";
+          } else if (error.response.status === 429) {
+              message = "Too many requests. Please slow down. ❌ ";
+          } else if (error.response.status === 500) {
+              message = "Server error. Please try again later. ❌ ";
+          }
+      } else if (error.request) {
+          // No response from backend
+          message = "No response from server. Please check your connection. ❌ ";
+      }
+      displayError(message);
+      console.error("Detailed error:", error);
     }
 }
 document.getElementById('logVisitorBtn').addEventListener('click', handleGeolocation);
