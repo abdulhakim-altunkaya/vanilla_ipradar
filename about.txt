@@ -1,6 +1,7 @@
+
+point namecheap to netlify
+remove dns pointing on old version ipradar on render
 activate cors allowed origins on the eumaps server file
-stop render service
-domain and dns configuration
 
 DONE
 small screen style left
@@ -9,3 +10,6 @@ errors returned by backend should be displayed
 create robots
 create sitemap
 keyboard enter push down connect to button click
+remove other endpoints from ipradar to eumaps
+stop render service for old ipradar website
+Upload new website to netlify and test it
