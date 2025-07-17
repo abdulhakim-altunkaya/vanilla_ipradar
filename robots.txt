@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://visacalculator.org/sitemap.xml
+Sitemap: https://www.ipradar.org/sitemap.xml

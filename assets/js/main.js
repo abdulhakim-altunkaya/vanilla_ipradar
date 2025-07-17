@@ -95,3 +95,9 @@ async function handleGeolocation() {
     }
 }
 document.getElementById('logVisitorBtn').addEventListener('click', handleGeolocation);
+
+document.getElementById('ipInput').addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') {
+        handleGeolocation();
+    }
+});
