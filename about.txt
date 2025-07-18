@@ -1,6 +1,3 @@
-
-point namecheap to netlify
-remove dns pointing on old version ipradar on render
 activate cors allowed origins on the eumaps server file
 
 DONE
@@ -13,3 +10,5 @@ keyboard enter push down connect to button click
 remove other endpoints from ipradar to eumaps
 stop render service for old ipradar website
 Upload new website to netlify and test it
+point namecheap to netlify
+remove dns pointing on old version ipradar on render
