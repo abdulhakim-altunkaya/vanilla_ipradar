@@ -1,0 +1,53 @@
+
+{
+  "@context": "https://schema.org",
+  "@type": ["WebApplication", "SearchAction"],
+  "name": "IP Radar | IP Address Geolocation Tool",
+  "url": "https://ipradar.org/",
+  "description": "Locate any IP address with IP Radar. Fast, accurate IP address lookup and geolocation tool for tracking continents, countries, and cities.",
+  "applicationCategory": ["NetworkTool", "GeospatialApplication"],
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "creator": {
+    "@type": "Organization",
+    "name": "IP Radar",
+    "url": "https://ipradar.org"
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://ipradar.org/?ip={ip_address}"
+    },
+    "query-input": "required name=ip_address"
+  },
+  "featureList": [
+    "IP address geolocation",
+    "Continent/country/city lookup",
+    "Interactive map visualization",
+    "Network connection analysis",
+    "Latitude/longitude coordinates",
+    "IP type identification",
+    "Real-time location tracking"
+  ],
+  "technologyUsed": {
+    "@type": "TechArticle",
+    "about": "IP geolocation technology",
+    "proficiencyLevel": "Expert"
+  },
+  "audience": {
+    "@type": "Audience",
+    "audienceType": [
+      "Network administrators",
+      "Security professionals",
+      "Web developers",
+      "IT support technicians",
+      "Digital marketers"
+    ]
+  },
+  "keywords": "IP Radar, IP address lookup, geolocation tool, IP tracker, network analysis, IP geolocation"
+}
